@@ -39,15 +39,18 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3.2.0
+      
       - name: setup yak
         uses: paramdigma/setup-yak@1.0.0
         with:
           token: ${{secrets.YAK_TOKEN}}
+      
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
           name: Tapir Grasshopper Plugin
           path: grasshopper-plugin/bin
+      
       - name: Create Yak manifest
         run: |
           yak spec
@@ -58,10 +61,12 @@ jobs:
           (Get-Content -Path "grasshopper-plugin/bin/manifest.yml") -replace '<description>', 'A toolset for Archicad automatization.' | Set-Content -Path "./manifest.yml"
           (Get-Content -Path "grasshopper-plugin/bin/manifest.yml") -replace '<url>', '"https://www.archicad-api.com/"' | Set-Content -Path "./manifest.yml"
         working-directory: grasshopper-plugin\bin
+      
       - name: Print YAML File Content
         run: |
           Get-Content -Path "grasshopper-plugin/bin/manifest.yml" -Raw
         shell: pwsh
+        
       - name: 🚧 Build YAK package
         run: yak build
         working-directory: grasshopper-plugin\bin
