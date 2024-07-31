@@ -80,11 +80,13 @@ jobs:
       - name: Deploy to Yak server
         run: |
           Get-ChildItem -Path .
-          $env:YAK_FILE = (Get-ChildItem -Path . *.yak -Recurse).fullname
-          if ($env:yakFile -eq $null) {
+          $yakFile = Get-ChildItem -Path . *.yak -Recurse | Select-Object -First 1
+          if ($yakFile -eq $null) {
             Write-Error "No .yak file found."
             exit 1
           }
+          $env:YAK_FILE = $yakFile.FullName
+          Write-Output "Yak file path: $env:YAK_FILE"
           yak push --source https://test.yak.rhino3d.com $env:YAK_FILE
         working-directory: grasshopper-plugin\bin
         env: 
