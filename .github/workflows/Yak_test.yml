@@ -1,6 +1,9 @@
 name: "Deploy to Yak"
 
-on: workflow_dispatch
+on:
+  push:
+    tags:
+      -"*"
 jobs:
   build:
     runs-on: [ windows-2019 ]
@@ -17,7 +20,7 @@ jobs:
         name: Tapir Grasshopper Plugin
         path: grasshopper-plugin/bin/tapir_gh.ghpy
     - name: Create Release
-      #if: startsWith(github.ref, 'refs/tags/')
+      if: startsWith(github.ref, 'refs/tags/')
       uses: ncipollo/release-action@v1
       with:
         artifacts: grasshopper-plugin/bin/tapir_gh.ghpy
@@ -27,6 +30,7 @@ jobs:
         
   deploy:
     runs-on: windows-latest
+    needs: build
     steps:
       - name: checkout
         uses: actions/checkout@v3.2.0
