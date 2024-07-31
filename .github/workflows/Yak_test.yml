@@ -53,7 +53,7 @@ jobs:
       
       - name: Copy Image to Destination
         run: |
-          Copy-Item -Path "../branding/logo/png/tapir_logo_black_512.png" -Destination "./tapir_logo_black_512.png"
+          Copy-Item -Path "../../branding/logo/png/tapir_logo_black_512.png" -Destination "./tapir_logo_black_512.png"
         working-directory: grasshopper-plugin\bin
         shell: pwsh
         
