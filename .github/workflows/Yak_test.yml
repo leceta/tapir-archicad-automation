@@ -16,4 +16,4 @@ jobs:
           yak spec
           Add-Content manifest.yml "icon: branding/logo/png/tapir_logo_black_512.png"
           Add-Content manifest.yml "version: ${{ github.ref_name }}"
-        working-directory: grasshopper-plugin/bin
+        working-directory: grasshopper-plugin\bin
