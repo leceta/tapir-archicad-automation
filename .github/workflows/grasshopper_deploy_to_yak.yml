@@ -1,4 +1,4 @@
-name: "Deploy to Yak"
+name: "Deploy to Yak 2"
 
 on: workflow_dispatch
 jobs:
