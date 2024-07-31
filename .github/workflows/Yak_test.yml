@@ -47,7 +47,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: TapirGrasshopperPlugin
-          path: grasshopper-plugin/bin
+          #path: grasshopper-plugin/bin
       - name: Create Yak manifest
         run: |
           yak spec
