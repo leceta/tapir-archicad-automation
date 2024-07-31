@@ -51,10 +51,16 @@ jobs:
           name: Tapir Grasshopper Plugin
           path: grasshopper-plugin/bin
       
+      - name: Copy Image to Destination
+        run: |
+          Copy-Item -Path "../branding/logo/png/tapir_logo_black_512.png" -Destination "./tapir_logo_black_512.png"
+        working-directory: grasshopper-plugin\bin
+        shell: pwsh
+        
       - name: Create Yak manifest
         run: |
           yak spec
-          Add-Content manifest.yml "icon: ../branding/logo/png/tapir_logo_black_512.png"
+          Add-Content manifest.yml "icon: tapir_logo_black_512.png"
           (Get-Content -Path "./manifest.yml") -replace '<version>', '${{ github.ref_name }}' | Set-Content -Path "./manifest.yml"
           (Get-Content -Path "./manifest.yml") -replace '<name>', 'Tapir' | Set-Content -Path "./manifest.yml"
           (Get-Content -Path "./manifest.yml") -replace '<author>', 'Tapir Community' | Set-Content -Path "./manifest.yml"
