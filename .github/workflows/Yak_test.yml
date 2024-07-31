@@ -54,7 +54,7 @@ jobs:
       - name: Create Yak manifest
         run: |
           yak spec
-          Add-Content manifest.yml "icon: branding/logo/png/tapir_logo_black_512.png"
+          Add-Content manifest.yml "icon: ././branding/logo/png/tapir_logo_black_512.png"
           (Get-Content -Path "./manifest.yml") -replace '<version>', '${{ github.ref_name }}' | Set-Content -Path "./manifest.yml"
           (Get-Content -Path "./manifest.yml") -replace '<name>', 'Tapir' | Set-Content -Path "./manifest.yml"
           (Get-Content -Path "./manifest.yml") -replace '<author>', 'Tapir Community' | Set-Content -Path "./manifest.yml"
