@@ -73,6 +73,12 @@ jobs:
           Get-Content -Path "grasshopper-plugin/bin/manifest.yml" -Raw
         shell: pwsh
         
-      - name: 🚧 Build YAK package
+      - name: Build YAK package
         run: yak build
         working-directory: grasshopper-plugin\bin
+
+      - name: Deploy to Yak server
+        run: |
+          $env:YAK_FILE = (Get-ChildItem "./" *.yak -Recurse).fullname
+          yak push --source https://test.yak.rhino3d.com $env:YAK_FILE
+          working-directory: grasshopper-plugin\bin
