@@ -43,6 +43,11 @@ jobs:
         uses: paramdigma/setup-yak@1.0.0
         with:
           token: ${{secrets.YAK_TOKEN}}
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: TapirGrasshopperPlugin
+          path: grasshopper-plugin/bin
       - name: Create Yak manifest
         run: |
           yak spec
