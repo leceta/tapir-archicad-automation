@@ -81,4 +81,4 @@ jobs:
         run: |
           $env:YAK_FILE = (Get-ChildItem "./" *.yak -Recurse).fullname
           yak push --source https://test.yak.rhino3d.com $env:YAK_FILE
-          working-directory: grasshopper-plugin\bin
+        working-directory: grasshopper-plugin\bin
