@@ -79,6 +79,7 @@ jobs:
 
       - name: Deploy to Yak server
         run: |
+          Get-ChildItem -Path .
           $env:YAK_FILE = (Get-ChildItem "./" *.yak -Recurse).fullname
           if ($yakFile -eq $null) {
             Write-Error "No .yak file found."
