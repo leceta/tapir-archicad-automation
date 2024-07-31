@@ -55,11 +55,11 @@ jobs:
         run: |
           yak spec
           Add-Content manifest.yml "icon: branding/logo/png/tapir_logo_black_512.png"
-          (Get-Content -Path "grasshopper-plugin/bin/manifest.yml") -replace '<version>', '${{ github.ref_name }}' | Set-Content -Path "./manifest.yml"
-          (Get-Content -Path "grasshopper-plugin/bin/manifest.yml") -replace '<name>', 'Tapir' | Set-Content -Path "./manifest.yml"
-          (Get-Content -Path "grasshopper-plugin/bin/manifest.yml") -replace '<author>', 'Tapir Community' | Set-Content -Path "./manifest.yml"
-          (Get-Content -Path "grasshopper-plugin/bin/manifest.yml") -replace '<description>', 'A toolset for Archicad automatization.' | Set-Content -Path "./manifest.yml"
-          (Get-Content -Path "grasshopper-plugin/bin/manifest.yml") -replace '<url>', '"https://www.archicad-api.com/"' | Set-Content -Path "./manifest.yml"
+          (Get-Content -Path "./manifest.yml") -replace '<version>', '${{ github.ref_name }}' | Set-Content -Path "./manifest.yml"
+          (Get-Content -Path "./manifest.yml") -replace '<name>', 'Tapir' | Set-Content -Path "./manifest.yml"
+          (Get-Content -Path "./manifest.yml") -replace '<author>', 'Tapir Community' | Set-Content -Path "./manifest.yml"
+          (Get-Content -Path "./manifest.yml") -replace '<description>', 'A toolset for Archicad automatization.' | Set-Content -Path "./manifest.yml"
+          (Get-Content -Path "./manifest.yml") -replace '<url>', '"https://www.archicad-api.com/"' | Set-Content -Path "./manifest.yml"
         working-directory: grasshopper-plugin\bin
       
       - name: Print YAML File Content
