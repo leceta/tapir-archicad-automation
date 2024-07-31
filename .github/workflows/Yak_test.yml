@@ -2,8 +2,10 @@ name: "Deploy to Yak"
 
 on:
   push:
+    branches:
+      - main
     tags:
-      -"*"
+      - '*'
 jobs:
   build:
     runs-on: [ windows-2019 ]
