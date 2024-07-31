@@ -81,7 +81,7 @@ jobs:
         run: |
           Get-ChildItem -Path .
           $env:YAK_FILE = (Get-ChildItem "./" *.yak -Recurse).fullname
-          if ($yakFile -eq $null) {
+          if ($env:yakFile -eq $null) {
             Write-Error "No .yak file found."
             exit 1
           }
