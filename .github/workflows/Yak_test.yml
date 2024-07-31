@@ -23,6 +23,7 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       uses: ncipollo/release-action@v1
       with:
+        tag: ${{ github.ref }}
         artifacts: grasshopper-plugin/bin/tapir_gh.ghpy
         draft: true
         allowUpdates: true
