@@ -85,10 +85,10 @@ jobs:
             Write-Error "No .yak file found."
             exit 1
           }
-          $env:YAK_FILE = $yakFile.FullName
+          $YAK_FILE = $yakFile.FullName
           Write-Output "Yak file name: $yakFile"
           Write-Output "Yak file path: $env:YAK_FILE"
-
+          echo "YAK_FILE=$YAK_FILE" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
         working-directory: grasshopper-plugin\bin
 
 
