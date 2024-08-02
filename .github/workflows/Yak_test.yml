@@ -88,6 +88,7 @@ jobs:
           $env:YAK_FILE = $yakFile.FullName
           Write-Output "Yak file path: $env:YAK_FILE"
           yak push --source https://test.yak.rhino3d.com $env:YAK_FILE
+          
         working-directory: grasshopper-plugin\bin
         env: 
           YAK_TOKEN: ${{ secrets.YAK_TOKEN }}
