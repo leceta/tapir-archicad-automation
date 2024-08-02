@@ -88,7 +88,7 @@ jobs:
           $YAK_FILE = $yakFile.FullName
           Write-Output "Yak file name: $yakFile"
           Write-Output "Yak file path: $env:YAK_FILE"
-          echo "YAK_FILE=$YAK_FILE" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
+          echo "YAK_FILE=$YAK_FILE" >> $env:GITHUB_ENV
         working-directory: grasshopper-plugin\bin
 
 
