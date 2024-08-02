@@ -76,8 +76,8 @@ jobs:
       - name: Build YAK package
         run: yak build
         working-directory: grasshopper-plugin\bin
-        
-      - name: Get Yak file
+
+      - name: Deploy to Yak server
         run: |
           Get-ChildItem -Path .
           $yakFile = Get-ChildItem -Path . *.yak -Recurse | Select-Object -First 1
@@ -86,23 +86,8 @@ jobs:
             exit 1
           }
           $env:YAK_FILE = $yakFile.FullName
-        working-directory: grasshopper-plugin\bin
-          
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: yak package
-          path: $yakFile
-
-
-      
-      - name: Deploy to Yak server
-        run: |
           Write-Output "Yak file path: $env:YAK_FILE"
           yak push --source https://test.yak.rhino3d.com $env:YAK_FILE
-          
         working-directory: grasshopper-plugin\bin
         env: 
           YAK_TOKEN: ${{ secrets.YAK_TOKEN }}
-
-                
