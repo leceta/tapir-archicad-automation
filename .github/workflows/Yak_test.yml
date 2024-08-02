@@ -86,7 +86,7 @@ jobs:
             exit 1
           }
           $env:YAK_FILE = $yakFile.FullName
-          working-directory: grasshopper-plugin\bin
+        working-directory: grasshopper-plugin\bin
           
       - name: Upload artifact
         uses: actions/upload-artifact@v3
