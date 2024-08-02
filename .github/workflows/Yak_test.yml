@@ -76,7 +76,13 @@ jobs:
       - name: Build YAK package
         run: yak build
         working-directory: grasshopper-plugin\bin
-
+        
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: yak package
+          path: grasshopper-plugin/bin/yakPackage.yak
+      
       - name: Deploy to Yak server
         run: |
           Get-ChildItem -Path .
