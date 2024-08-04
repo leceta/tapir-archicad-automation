@@ -99,7 +99,7 @@ jobs:
           path: ${{ env.YAK_FILE }}
           
       - name: deploy to yak server
-        run: $myFile= $env:YAK_FILE  
+        run: |
           yak push --source https://test.yak.rhino3d.com $env:YAK_FILE
         working-directory: grasshopper-plugin\bin
         env: 
