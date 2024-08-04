@@ -100,7 +100,7 @@ jobs:
           
       - name: deploy to yak server
         run: $myFile= $env:YAK_FILE  
-          yak push --source https://test.yak.rhino3d.com $myFile=
+          yak push --source https://test.yak.rhino3d.com $myFile
         working-directory: grasshopper-plugin\bin
         env: 
           YAK_TOKEN: ${{ secrets.YAK_TOKEN }}
