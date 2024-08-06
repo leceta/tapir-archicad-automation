@@ -100,16 +100,16 @@ jobs:
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: yak package
-          path: ${{ env.YAK_FILE }}
+      #- name: Upload Artifact
+      #  uses: actions/upload-artifact@v3
+      #  with:
+      #    name: yak package
+      #    path: ${{ env.YAK_FILE }}
           
       - name: deploy to yak server
         run: |
-          yak push $env:YAK_FILE
-          #yak push --source https://test.yak.rhino3d.com $env:YAK_FILE
+          #yak push $env:YAK_FILE
+          yak push --source https://test.yak.rhino3d.com $env:YAK_FILE
 
         env: 
           YAK_TOKEN: ${{ secrets.YAK_TOKEN }}
