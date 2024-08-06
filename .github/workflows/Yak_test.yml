@@ -19,11 +19,11 @@ jobs:
     - name: Build Grasshopper Plugin
       run: ipy grasshopper-plugin/build_module.py
     
-    #- name: Upload Artifact
-    #  uses: actions/upload-artifact@v3
-    #  with:
-    #    name: Tapir Grasshopper Plugin
-    #    path: grasshopper-plugin/bin/tapir_gh.ghpy
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Tapir Grasshopper Plugin
+        path: grasshopper-plugin/bin/tapir_gh.ghpy
     
     - name: debug
       run: echo "${{ github.ref_name }}"
