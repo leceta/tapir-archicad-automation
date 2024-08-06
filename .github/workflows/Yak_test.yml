@@ -23,15 +23,14 @@ jobs:
         path: grasshopper-plugin/bin/tapir_gh.ghpy
     - name: debug
       run: echo "${{ github.ref_name }}"
-    #- name: Create Release
-    #  if: startsWith(github.ref, 'refs/tags/')
-    #  uses: ncipollo/release-action@v1
-    #  with:
-    #    tag: ${{ github.ref }}
-    #    artifacts: grasshopper-plugin/bin/tapir_gh.ghpy
-    #    draft: true
-    #    allowUpdates: true
-    #    token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: grasshopper-plugin/bin/tapir_gh.ghpy
+        draft: true
+        allowUpdates: true
+        token: ${{ secrets.GITHUB_TOKEN }}
         
   deploy:
     runs-on: windows-latest
@@ -91,7 +90,15 @@ jobs:
           Write-Output "Yak file path: $env:YAK_FILE"
           echo "YAK_FILE=$env:YAK_FILE" >> $env:GITHUB_ENV
         working-directory: grasshopper-plugin\bin
-
+        
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts:  ${{ env.YAK_FILE }}
+          draft: true
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
@@ -101,8 +108,8 @@ jobs:
           
       - name: deploy to yak server
         run: |
-          #yak push $env:YAK_FILE
-          yak push --source https://test.yak.rhino3d.com $env:YAK_FILE
-        #working-directory: grasshopper-plugin\bin
+          yak push $env:YAK_FILE
+          #yak push --source https://test.yak.rhino3d.com $env:YAK_FILE
+
         env: 
           YAK_TOKEN: ${{ secrets.YAK_TOKEN }}
