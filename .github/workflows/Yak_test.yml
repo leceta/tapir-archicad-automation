@@ -41,7 +41,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         
   deploy:
-    if: ${{ github.event_name == 'release' && github.event.action == 'published' }}
+    if: ${{ github.event_name == 'release' && github.event.action == 'released' }}
     runs-on: windows-latest
     environment: tapir
     needs: build
