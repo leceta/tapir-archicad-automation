@@ -43,3 +43,5 @@ Once you downloaded the Add-On files you have to install it in Archicad. Follow 
  
 You can find the documentation of the implemented commands here: https://enzyme-apd.github.io/tapir-archicad-automation/archicad-addon.
 
+.
+
