@@ -7,7 +7,7 @@ on:
     tags:
       - '*'
   release:
-      types: []
+      types: [drafted, published]
 jobs:
   build:
     runs-on: [ windows-2019 ]
