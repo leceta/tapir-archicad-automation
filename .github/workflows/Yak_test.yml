@@ -6,8 +6,6 @@ on:
       - main
     tags:
       - '*'
-  release:
-      types: [drafted, published]
 jobs:
   build:
     runs-on: [ windows-2019 ]
@@ -41,11 +39,10 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         
   deploy:
-    if: ${{ github.event_name == 'release' && github.event.action == 'released' }}
     runs-on: windows-latest
     environment: tapir
     needs: build
-    #if: startsWith(github.ref, 'refs/tags/') && github.event.release.draft == true
+    if: startsWith(github.ref, 'refs/tags/')
    
     steps:
       - name: checkout
