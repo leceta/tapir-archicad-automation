@@ -1,4 +1,4 @@
-name: "Deploy to Yak"
+name: "Grasshopper Plugin Build & Deploy to Yak"
 
 on:
   push:
